@@ -22,15 +22,15 @@ __Extensions -> Manage Extensions -> Online -> Serenity.OpenID__
 You will need to obtain a client id and client secret from your provider below. If your provider
 is not listed, select Microsoft.  You may need to edit the *OpenIdService.cs* file later.
    
-    | Provider |  Developer Account | Obtain Client ID/Secret   | MVC  |  AspNetCore 
-    |--|--|--|
-    | Microsoft | [Azure Signup] | [Azure Portal] | [Azure MVC] | [Azure DotNetCore]|
-    | Amazon | [AWS Signup] | [AWS Management] | ? | [AWS DotNetCore] |
-    | Okta | [Okta Signup] | [Okta Management] |[Okta MVC] | [Okta AspNetCore] | 
-    | Auth0 | [Auth0 Signup] | [Auth0 Management] | [Auth0 MVC] | [Auth0 AspNetCore] |
-    | Google | [Google Signup] | [Google Management] | ? | ?  |
-    |--|--|--|
-    | All Others  | __[OpenID Certified Providers]__||
+    | Provider |  Developer Account | Obtain Client ID/Secret | MVC  |  AspNetCore 
+    |--|--|--|--|--|
+    | Microsoft | [Azure Signup] | [Azure Portal] | [Azure MVC] | [Azure DotNetCore]
+    | Amazon | [AWS Signup] | [AWS Management] |  | [AWS DotNetCore] 
+    | Okta | [Okta Signup] | [Okta Management] |[Okta MVC] | [Okta AspNetCore] 
+    | Auth0 | [Auth0 Signup] | [Auth0 Management] | [Auth0 MVC] | [Auth0 AspNetCore] 
+    | Google | [Google Signup] | [Google Management] |  |  |
+    |--|--|--|--|--|
+    | All Others  | __[OpenID Certified Providers]__| | | |
 
 4.  Update  __web.config__ with your client secret and client id
     ```xml
