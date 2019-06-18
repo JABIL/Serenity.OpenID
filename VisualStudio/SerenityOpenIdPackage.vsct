@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <Extern href="stdidcmd.h"/>
+
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidSerenityOpenIdPackage">
+    <Groups>
+      <Group guid="guidSerenityOpenIdPackageCmdSet" id="ProjectContextMenuGroup" priority="0x07A1">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
+      </Group>
+    </Groups>
+    <Buttons>
+      <Button guid="guidSerenityOpenIdPackageCmdSet" id="cmdidReGenerateAll"  priority="0x0100" type="Button">
+        <Parent guid="guidSerenityOpenIdPackageCmdSet" id="ProjectContextMenuGroup" />
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <ButtonText>Enable OpenID</ButtonText>
+          <CommandName>Authentication - Enable OpenID</CommandName>
+          <CanonicalName>OpenID.Enable</CanonicalName>
+          <LocCanonicalName>OpenID.Enable</LocCanonicalName>
+          <ToolTipText>Enables OpenID Authenticatiton for Serenity</ToolTipText>
+        </Strings>
+      </Button>
+    </Buttons>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidSerenityOpenIdPackage" value="{7a7e687b-11cf-492f-b9a7-de0bb7ad6031}" />
+    <GuidSymbol name="guidSerenityOpenIdPackageCmdSet" value="{563de300-9c6a-4eeb-b2ff-126fc3114379}">
+      <IDSymbol name="ProjectContextMenuGroup" value="0x1021"/>
+      <IDSymbol name="cmdidReGenerateAll" value="0x0101"/>
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
