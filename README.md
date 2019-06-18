@@ -25,11 +25,12 @@ is not listed, select Microsoft.  You may need to edit the *OpenIdService.cs* fi
     | Provider |  Developer Account | Obtain Client ID/Secret   | MVC  |  AspNetCore 
     |--|--|--|
     | Microsoft | [Azure Signup] | [Azure Portal] | [Azure MVC] | [Azure DotNetCore]|
-    | Amazon | [AWS Signup] | [AWS Management] | ?? | [AWS DotNetCore] |
-    | Okta | [Okta Signup] | [Okta Management] |[Okta MVC] | [Okta AspNetCore]
-    | Google | [Google Signup] | [Google Management] |[Identity Platform]
+    | Amazon | [AWS Signup] | [AWS Management] | ? | [AWS DotNetCore] |
+    | Okta | [Okta Signup] | [Okta Management] |[Okta MVC] | [Okta AspNetCore] | 
+    | Auth0 | [Auth0 Signup] | [Auth0 Management] | [Auth0 MVC] | [Auth0 AspNetCore] |
+    | Google | [Google Signup] | [Google Management] | ? | ?  |
     |--|--|--|
-    | All Others  | __[Certified Providers]__||
+    | All Others  | __[OpenID Certified Providers]__||
 
 4.  Update  __web.config__ with your client secret and client id
     ```xml
@@ -83,6 +84,11 @@ If you weren't so lucky the first time, you may need to update the OpenIdService
 [Google Management]:https://console.developers.google.com/apis/api/iam.googleapis.com
 [Identity Platform]:https://cloud.google.com/identity-platform/
 
+[Auth0 Signup]:https://auth0.com/signup
+[Auth0 Management]:https://console.developers.google.com/apis/api/iam.googleapis.com
+[Auth0 MVC]:https://auth0.com/docs/quickstart/webapp/aspnet-owin
+[Auth0 AspNetCore]:https://auth0.com/docs/quickstart/webapp/aspnet-core/01-login
+
 [Visual Studio Market Place]: https://marketplace.visualstudio.com/_apis/public/gallery/publishers/VolkanCeylan/vsextensions/SereneSerenityApplicationTemplate/3.9.6.1/vspackage
 [Okta Signup]: https://developer.okta.com/signup/
 [Okta Management]: https://www.oktapreview.com/
@@ -95,7 +101,7 @@ If you weren't so lucky the first time, you may need to update the OpenIdService
 [Azure Mvc]:https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-asp-webapp
 
 
-[Certified Providers]:https://openid.net/certification/
+[OpenID Certified Providers]:https://openid.net/certification/
 
 [AWS Signup]: https://portal.aws.amazon.com/billing/signup
 [AWS Management]: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade
