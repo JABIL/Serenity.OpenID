@@ -70,11 +70,12 @@
     <Compile Include="VsContainerBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon.jpg">
+    <Content Include="icon.jpg" />
+    <Content Include="LICENSE">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>
-    <Content Include="LICENSE">
+    <Content Include="preview.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <IncludeInVSIX>true</IncludeInVSIX>
     </Content>

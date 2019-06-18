@@ -6,6 +6,8 @@
         <Description xml:space="preserve">OpenID authentication for Serenity Web platform. Adds authentication for users against OpenID providers such as AzureAD, AWS, Google, iCloud, Facebook, Okta, or Office 365.</Description>
         <License>LICENSE</License>
         <Icon>icon.jpg</Icon>
+        <PreviewImage>preview.png</PreviewImage>
+        <Tags>AspNetCore MVC ASP.NET Serenity OpenID Authentication</Tags>
         <Preview>true</Preview>
     </Metadata>
     <Installation>
@@ -14,6 +16,7 @@
     <Dependencies>
         <Dependency d:Source="Manual" Id="Microsoft.Framework.NDP" DisplayName="Microsoft.Framework.NDP" Version="[4.6,)" />
         <Dependency Id="Microsoft.VisualStudio.MPF.16.0" DisplayName="Visual Studio MPF 16.0" d:Source="Installed" Version="[16.0,17.0)" />
+        <Dependency d:Source="Installed" Id="Serene_SerenityApplicationTemplate" DisplayName="Serene" Version="[3.0,4.0)" d:InstallSource="Download" Location="https://marketplace.visualstudio.com/_apis/public/gallery/publishers/VolkanCeylan/vsextensions/SereneSerenityApplicationTemplate/3.9.6.1/vspackage" />
     </Dependencies>
     <Prerequisites>
         <Prerequisite Id="Microsoft.VisualStudio.Component.Roslyn.LanguageServices" Version="[15.0,17.0)" DisplayName="C# and Visual Basic" />

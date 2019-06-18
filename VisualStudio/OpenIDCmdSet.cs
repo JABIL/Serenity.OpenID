@@ -10,7 +10,7 @@ namespace Serenity.OpenID.VsIntegration
     {
         public const string PackageGuidString = "7a7e687b-11cf-492f-b9a7-de0bb7ad6031";
         public const string CmdSetString = "563de300-9c6a-4eeb-b2ff-126fc3114379";
-        public const string ProductId = "c243d5bf-0a2c-41be-8fbf-f1abfbbccda3";
+        public const string ProductId = "058e00d5-526f-4a38-9a1c-2a512860e9ee";
 
         public static readonly Guid guidCmdSet = new Guid(CmdSetString);
     }
