@@ -6,12 +6,12 @@
 
   <Commands package="guidSerenityOpenIdPackage">
     <Groups>
-      <Group guid="guidSerenityOpenIdPackageCmdSet" id="ProjectContextMenuGroup" priority="0x07A1">
+      <Group guid="guidSerenityOpenIdPackageCmdSet" id="ProjectContextMenuGroup" priority="0x0000">
         <Parent guid="guidSHLMainMenu" id="IDM_VS_CTXT_PROJNODE"/>
       </Group>
     </Groups>
     <Buttons>
-      <Button guid="guidSerenityOpenIdPackageCmdSet" id="cmdidReGenerateAll"  priority="0x0100" type="Button">
+      <Button guid="guidSerenityOpenIdPackageCmdSet" id="cmdidReGenerateAll"   priority="0x0100" type="Button">
         <Parent guid="guidSerenityOpenIdPackageCmdSet" id="ProjectContextMenuGroup" />
         <CommandFlag>DynamicVisibility</CommandFlag>
         <Strings>
