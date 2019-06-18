@@ -1,35 +1,77 @@
 # OpenID for Serenity
 Serenity is an application template for developing business apps in Visual Studio. 
 The default application template stores user accounts and passwords in a database. 
-This add-in enables OpenID user authentication across an organization, for 
-business users who use a single sign-on with Office 365, Amazaon, Google, Okta, 
-and Office365 or some other OpenID provider.
+For business users that require enterprise SSO, __Serenity.OpenID__ enables OpenID
+support for the most widely used identity providers with no schema schanges necessary.
+
+*See list below for AspNetCore and AspNetMvc support.*
+
+*If your provider is not supported, use the Microsoft option and modify the web.config settings 
+and OpenIdService.cs files to work with your provider and web platform*
+
 
 ## Getting Started
  
 1. Add the Visual Studio OpenID Extension  
 __Extensions -> Manage Extensions -> Online -> Serenity.OpenID__
 
-2. Right on the Serene web project __Enable OpenID__
+2. Right click on the web project __Enable OpenID__
   ![Enable OpenID](./Documentation/enable-openid-menu.png)
 
-3. Select the provider(s) you want to enable. You will need to obtain a client id and client secret from your provider. Links below
+3. Select the provider you want to enable. 
+You will need to obtain a client id and client secret from your provider below. If your provider
+is not listed, select Microsoft.  You may need to edit the *OpenIdService.cs* file later.
    
-    | Provider |  Developer Account | Get Client ID/Secret 
+    | Provider |  Developer Account | Obtain Client ID/Secret   | MVC  |  AspNetCore 
     |--|--|--|
-    | Microsoft | [Office 365 Signup] | [Developer Portal]
-    | Amazon | [Amazon Signup] | [AWS Management]
-    | Okta | [Okta Signup] | [Okta Management]
-    | Google | [Google Signup] | [Google Management]
-    | Github | [Github Signup]  | [Github Management]
-    | LinkedIn | [LinkedIn Signup] | [LinkedIn Management]
+    | Microsoft | [Azure Signup] | [Azure Portal] | [Azure MVC] | [Azure DotNetCore]|
+    | Amazon | [AWS Signup] | [AWS Management] | ?? | [AWS DotNetCore] |
+    | Okta | [Okta Signup] | [Okta Management] |[Okta MVC] | [Okta AspNetCore]
+    | Google | [Google Signup] | [Google Management] |[Identity Platform]
     |--|--|--|
     | All Others  | __[Certified Providers]__||
 
-4.  Update OpenID settings in your web.config
+4.  Update  __web.config__ with your client secret and client id
+    ```xml
+    <configuration>
+        <appSettings>
+            <!--   OKTA EXAMPLE    -->
+            <add key="OpenID" value="{ 
+                Domain: 'https://{org-id}.okta.com',  
+                ClientId : '<client-id>',  
+                ClientSecret: '<client-secret here>',  
+                RedirectUri: 'https://localhost:8080/',  
+                PostLogoutUri:  'https://localhost:8080/Account/SignOut' }" />
+            
+            <!--   MICROSOFT EXAMPLE   -->
+            <add key="OpenID" value="{ 
+                Domain: 'https://https://login.microsoftonline.com/{tenant-id}',  
+                ClientId : '<client-id>',  
+                ClientSecret: '<client-secret>',  
+                RedirectUri: 'https://localhost:8080/',  
+                PostLogoutUri:  'https://localhost:8080/Account/SignOut' }" />
+        
+            <!--  AWS EXAMPLE   -->
+            <add key="OpenID" value="{ 
+                Domain: 'https://cognito-idp.{region name}.amazonaws.com/{pool id}',  
+                ClientId : '{unique Cognito client ID}',  
+                ClientSecret: '{key generated on Identity Pool creation}',  
+                RedirectUri: 'https://localhost:8080/',  
+                PostLogoutUri:  'https://localhost:8080/Account/SignOut' }" />
+        
+        </appSettings>
+    ```
 
+5.  You're ready to go! New users will be added to the database with no password/salt/hash after they're authenticated. Existing users will continue to see account/password login screen until the database is updated with the following:
+     ![New Users](./Documentation/new-users-database.png)
+    ```sql
+    UPDATE USERS 
+    SET PASSWORDHASH='', PASSWORDSALT='', SOURCE='ldap'
+    WHERE LEN(PASSWORDHASH) >0
+    ```
 
-
+## Trouble Shooting
+If you weren't so lucky the first time, you may need to update the OpenIdService.cs file with the appropriate claims. Set a breakpoint at Administration\Users\Authentication\OpenIdServices.cs
 
 [Github Signup]:https://console.developers.google.com/apis/credentials/oauthclien
 [Github Management]:https://console.developers.google.com/apis/credentials/oauthclien
@@ -37,14 +79,24 @@ __Extensions -> Manage Extensions -> Online -> Serenity.OpenID__
 [LinkedIn Signup]:https://console.developers.google.com/apis/credentials/oauthclien
 [LinkedIn Management]:https://console.developers.google.com/apis/credentials/oauthclien
 
-[Google Signup]:https://console.developers.google.com/apis/credentials/oauthclien
-[Google Management]:https://console.developers.google.com/apis/credentials/oauthclien
+[Google Signup]:https://console.cloud.google.com/freetrial
+[Google Management]:https://console.developers.google.com/apis/api/iam.googleapis.com
+[Identity Platform]:https://cloud.google.com/identity-platform/
+
 [Visual Studio Market Place]: https://marketplace.visualstudio.com/_apis/public/gallery/publishers/VolkanCeylan/vsextensions/SereneSerenityApplicationTemplate/3.9.6.1/vspackage
 [Okta Signup]: https://developer.okta.com/signup/
 [Okta Management]: https://www.oktapreview.com/
-[Office 365 Signup]: https://azure.microsoft.com/en-us/free/
-[Developer Portal]:https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade
-[Apple Developer]: https://developer.apple.com/programs/
+[Okta MVC]:https://developer.okta.com/blog/2018/04/18/authorization-in-your-aspnet-mvc-4-application
+[Okta AspNetCore]:https://developer.okta.com/quickstart-fragments/dotnet/aspnetcore-implicit/
+
+[Azure Signup]: https://azure.microsoft.com/en-us/free/
+[Azure Portal]:https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade
+[Azure DotNetCore]:https://azure.microsoft.com/en-us/resources/samples/active-directory-dotnet-webapp-openidconnect-aspnetcore/
+[Azure Mvc]:https://docs.microsoft.com/en-us/azure/active-directory/develop/tutorial-v2-asp-webapp
+
+
 [Certified Providers]:https://openid.net/certification/
-[Amazon Signup]: https://azure.microsoft.com/en-us/free/
-[AWS Management]:https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade
+
+[AWS Signup]: https://portal.aws.amazon.com/billing/signup
+[AWS Management]: https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade
+[AWS DotNetCore]: https://aws.amazon.com/blogs/developer/introducing-the-asp-net-core-identity-provider-preview-for-amazon-cognito/
